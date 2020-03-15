@@ -3,11 +3,11 @@ from parameters import Param
 import matplotlib.pyplot as plt
 from utils import make_gif, make_plot
 
-NAME = 'example'
+NAME = 'normal'
 
 fst = Param(
     CLUSTERS = 144,
-    CLUST_SIZE = 36,
+    CLUST_SIZE = 100,
     DAYS = 200,
     INFECTION_TIME = 30,
     DEATH_RATE = 0.3,

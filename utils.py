@@ -3,6 +3,14 @@ from random import shuffle, randint, uniform
 import numpy as np
 import matplotlib.pyplot as plt
 from os import system
+from sys import platform
+
+def clear():
+    if platform[:3] == 'win':
+        system('cls')
+    elif platform[:3] == 'lin':
+        system('clear')
+
 
 def inside_cluster(params, x, y):
     return 0 <= x < int(sqrt(params.CLUST_SIZE)) and 0 <= y < int(sqrt(params.CLUST_SIZE))
@@ -40,7 +48,7 @@ def proceed(population, param, cluster, x, y, active):
 def migration(population, params):
     def migration_condition(person):
         return person != -2
-        # return not(person in range(params.INFECTION_TIME//5) or''' person == -2)
+        # return not(person in range(params.INFECTION_TIME//5) or person == -2)
 
     for _ in range(params.MIGRATIONS_PER_DAY):
         first, second = randint(0,params.CLUSTERS-1), randint(0,params.CLUSTERS-1)
@@ -75,11 +83,15 @@ def frame_name(val, maxi):
 
 def print_progressbar(val, maxi):
     perc = (100*val) // maxi
-    system('clear')
-    print('|'+('#'*(perc//10)) + (' '*(10 - perc//10)) + '|')
-    print('|'+('#'*(perc%10)) + (' '*(10 - perc%10)) + '|')
+    clear()
+    print('|'+('#'*(perc//10)) + (' '*(9 - perc//10)) + '|')
+    print('|'+('#'*(perc%10)) + (' '*(9 - perc%10)) + '|')
 
 def make_gif(name, run=True):
+    if platform[:3] != 'lin': 
+        print("Sorry, I can't make a gif on Windows")
+        return None
+
     print('creating a gif please wait ...')
     system('convert -delay 10 -loop 0 imgs/*.png imgs/'+name+'.gif')
     system('rm imgs/*.png')
