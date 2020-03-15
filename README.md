@@ -11,12 +11,13 @@ Virus simulator written in python
 ## Usage examples
 
 ## TODO
-[ ] People migrate less when they at the second half of their illness
-[ ] People can become ill twice (but with less probability)
-[ ] Divide world to countries (people go abroad less frequently)
-[ ] Each country has own health care
-[ ] Full support for Windows
-[ ] add GUI
+
+- [ ] People migrate less when they at the second half of their illness
+- [ ] People can become ill twice (but with less probability)
+- [ ] Divide world to countries (people go abroad less frequently)
+- [ ] Each country has own health care
+- [ ] Full support for Windows
+- [ ] add GUI
 
 ## Implementation details
 ### run_simulation - population
