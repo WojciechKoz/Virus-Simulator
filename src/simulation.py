@@ -11,7 +11,9 @@ def make_heatmap(params, X, day, path):
     world = np.array([ill_rate(mat, params) 
         for mat in X]).reshape((int(sqrt(params.CLUSTERS)),int(sqrt(params.CLUSTERS))))
 
+    ax = plt.axes()
     sns.heatmap(world, cmap='Greys', vmin=0, vmax=1)
+    ax.set_title("active cases. Day "+str(day))
     plt.savefig(frame_name(day, params.DAYS, path)+' day.png')
     plt.close()
 

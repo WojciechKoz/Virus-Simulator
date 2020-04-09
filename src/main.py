@@ -29,7 +29,7 @@ print('time elapsed:', time() - start)
 make_gif(PATH, NAME)
 
 # plt.plot(range(len(migrations)), migrations, label='migrations', color='blue')
-# plt.plot(range(len(real_mig)), real_mig, label='real migrations', color='blue', ls=':')
+plt.plot(range(len(real_mig)), real_mig, label='migrations', color='blue', ls=':')
 make_plot(fst, cumulative, active, healed, dead, label='', color='red')
 
 plt.savefig(PATH+NAME+'.png')
