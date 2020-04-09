@@ -52,5 +52,5 @@ def ill_rate(region, params):
     counter = 0
     for y in range(params.CLUST_SIDE_LEN):
         for x in range(params.CLUST_SIDE_LEN):
-            counter += int(region[y,x] not in (0, -1))
+            counter += int(region[y,x] not in (0, -1, -2))
     return counter / params.CLUST_SIDE_LEN**2

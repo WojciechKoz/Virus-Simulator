@@ -5,7 +5,7 @@ from utils import make_gif, make_plot
 from time import time
 import sys
 
-PATH = sys.argv[1] if len(sys.argv) == 2 else "/tmp/output/"
+PATH = sys.argv[1] if len(sys.argv) == 2 else "../imgs"
 NAME = 'huge'
 
 fst = Param(
