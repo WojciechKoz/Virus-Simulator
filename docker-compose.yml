@@ -4,3 +4,4 @@ services:
     build: .
     volumes: 
       - ./src:/usr/src/app
+      - ./imgs:/tmp/output

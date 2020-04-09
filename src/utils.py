@@ -9,9 +9,9 @@ def clear():
         system('clear')
 
 
-def frame_name(val, maxi):
+def frame_name(val, maxi, path):
     zeros = len(str(maxi)) - len(str(val))
-    return 'imgs/'+"0"*zeros+str(val)
+    return path+"0"*zeros+str(val)
 
 
 def print_progressbar(val, maxi):
@@ -23,14 +23,15 @@ def print_progressbar(val, maxi):
     '''
     print((100*val) // maxi, "%", flush=True)
 
-def make_gif(name, run=True):
+
+def make_gif(path, name, run=True):
     if platform[:3] != 'lin': 
         print("Sorry, I can't make a gif on Windows")
         return None
 
     print('creating a gif please wait ...')
-    system('convert -delay 10 -loop 0 imgs/*.png imgs/'+name+'.gif')
-    system('rm imgs/*day.png')
+    system('convert -delay 10 -loop 0 '+path+'*day.png '+path+name+'.gif')
+    system('rm '+path+'*day.png')
 
 
 def make_plot(params, cumulative, active, healed, dead, label, color):

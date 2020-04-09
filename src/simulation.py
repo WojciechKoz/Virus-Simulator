@@ -7,12 +7,12 @@ import seaborn as sns
 from math import sqrt
 
 
-def make_heatmap(params, X, day):
+def make_heatmap(params, X, day, path):
     world = np.array([ill_rate(mat, params) 
         for mat in X]).reshape((int(sqrt(params.CLUSTERS)),int(sqrt(params.CLUSTERS))))
 
     sns.heatmap(world, cmap='Greys', vmin=0, vmax=1)
-    plt.savefig(frame_name(day, params.DAYS)+' day.png')
+    plt.savefig(frame_name(day, params.DAYS, path)+' day.png')
     plt.close()
 
 
@@ -43,7 +43,7 @@ def day_update(params, X, active):
     return cumulative_num, active_num, healed_num, dead_num, mig_num
 
 
-def run_simulation(params):
+def run_simulation(params, path):
     '''
     X - 3D matrix representing a world 
     each single number in that matrix is a human
@@ -68,7 +68,7 @@ def run_simulation(params):
 
     for day in range(params.DAYS):
         print_progressbar(day, params.DAYS) 
-        make_heatmap(params, X, day)
+        make_heatmap(params, X, day, path)
 
         # simulate a single day
         cumul_num, patients_num, healed_num, dead_num, real_mig_num = day_update(params, X, active)
