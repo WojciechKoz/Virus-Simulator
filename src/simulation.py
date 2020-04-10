@@ -2,9 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from random import shuffle, randint, uniform
 from simulation_utils import infect, proceed, migration, ill_rate
-from utils import frame_name, print_progressbar
+from utils import frame_name
 import seaborn as sns
 from math import sqrt
+from tqdm import tqdm
+import sys
 
 
 def make_heatmap(params, X, day, path):
@@ -68,8 +70,9 @@ def run_simulation(params, path):
     migrations = [params.MIGRATIONS_PER_DAY]
     real_mig = [params.MIGRATIONS_PER_DAY]
 
+    bar = tqdm(total=params.DAYS, file=sys.stdout)
     for day in range(params.DAYS):
-        print_progressbar(day, params.DAYS) 
+        bar.update(1)
         make_heatmap(params, X, day, path)
 
         # simulate a single day
@@ -89,4 +92,5 @@ def run_simulation(params, path):
         migrations.append(params.MIGRATIONS_PER_DAY)
         real_mig.append(real_mig_num)
 
+    bar.close()
     return cumulative, active, healed, dead, migrations, real_mig

@@ -4,3 +4,4 @@ services:
     build: .
     volumes: 
       - ./imgs:/tmp/output
+    tty: true

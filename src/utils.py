@@ -14,22 +14,12 @@ def frame_name(val, maxi, path):
     return path+"0"*zeros+str(val)
 
 
-def print_progressbar(val, maxi):
-    '''
-    perc = (100*val) // maxi
-    clear()
-    print('|'+('#'*(perc//10)) + (' '*(9 - perc//10)) + '|')
-    print('|'+('#'*(perc%10)) + (' '*(9 - perc%10)) + '|')
-    '''
-    print((100*val) // maxi, "%", flush=True)
-
-
 def make_gif(path, name, run=True):
     if platform[:3] != 'lin': 
         print("Sorry, I can't make a gif on Windows")
         return None
 
-    print('creating a gif please wait ...')
+    print('creating a gif please wait ...', flush=True)
     system('convert -delay 10 -loop 0 '+path+'*day.png '+path+name+'.gif')
     system('rm '+path+'*day.png')
 
